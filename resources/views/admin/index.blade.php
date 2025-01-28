@@ -119,6 +119,11 @@
                                                             {{ ucwords(strtolower($user->role)) }}
                                                         </span>
                                                     @endif
+                                                    @if ($user->role === "asisten")
+                                                        <span class="badge badge-primary">
+                                                            {{ ucwords(strtolower($user->role)) }}
+                                                        </span>
+                                                    @endif
                                                 </td>
                                                 <td class="text-center">
                                                     <div class="btn-group">

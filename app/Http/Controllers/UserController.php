@@ -40,7 +40,7 @@ class UserController extends Controller
             abort(403, 'Anda tidak memiliki izin untuk melihat data ini.');
         }
     
-        $user->load('mahasiswas'); // Load relasi mahasiswas
+        $user->load('asistens'); // Load relasi asistens
         return view('admin.show', compact('user'));
     }
     

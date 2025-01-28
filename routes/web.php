@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AsistenController;
 use App\Http\Controllers\MahasiswaController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,6 +32,16 @@ Route::middleware('auth')->group(function () {
     Route::delete('users/{user}', [UserController::class, 'destroy'])->name('admin.users.destroy');
 });
 
+
+Route::middleware('auth')->group(function () {
+    Route::get('asisten', [AsistenController::class, 'index'])->name('asisten.index');
+    Route::get('asisten/create', [AsistenController::class, 'create'])->name('asisten.create');
+    Route::post('asisten', [AsistenController::class, 'store'])->name('asisten.store');
+    Route::get('asisten/{asisten:npm}', [AsistenController::class, 'show'])->name('asisten.show');
+    Route::get('asisten/{asisten:npm}/edit', [AsistenController::class, 'edit'])->name('asisten.edit');
+    Route::put('asisten/{asisten:npm}', [AsistenController::class, 'update'])->name('asisten.update');
+    Route::delete('asisten/{asisten:npm}', [AsistenController::class, 'destroy'])->name('asisten.destroy');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('mahasiswa', [MahasiswaController::class, 'index'])->name('mahasiswa.index');

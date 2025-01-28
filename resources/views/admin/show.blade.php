@@ -47,24 +47,25 @@
                         </div>
                         <div class="card-body">
 
-                            @if ($user->mahasiswas->isEmpty())
-                                <p class="text-muted">Pengguna ini belum memiliki mahasiswa.</p>
+                            @if ($user->asistens->isEmpty())
+                                <p class="text-muted">Pengguna ini belum memiliki asisten.</p>
                             @else
+                                <!-- Tabel Tim -->
                                 <div class="table-responsive">
                                     <table class="table-striped table">
                                         <thead>
                                             <tr>
-                                                <th>Nama Mahasiswa</th>
+                                                <th>Nama Asisten</th>
                                                 <th>NPM</th>
                                                 <th>Nomor Telepon</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($user->mahasiswas as $mahasiswa)
+                                            @foreach ($user->asistens as $asisten)
                                                 <tr>
-                                                    <td>{{ $mahasiswa->nama }}</td>
-                                                    <td>{{ $mahasiswa->npm }}</td>
-                                                    <td>{{ $mahasiswa->nomor_telepon }}</td>
+                                                    <td>{{ $asisten->nama }}</td>
+                                                    <td>{{ $asisten->npm }}</td>
+                                                    <td>{{ $asisten->nomor_telepon }}</td>
                                                 </tr>
                                             @endforeach
                                         </tbody>

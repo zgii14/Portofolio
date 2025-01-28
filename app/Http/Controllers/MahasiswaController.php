@@ -12,7 +12,6 @@ class MahasiswaController extends Controller
         $mahasiswas = Mahasiswa::where('user_id', auth()->id())->get();
         return view('mahasiswa.index', compact('mahasiswas'));
     }
-    
 
     public function create()
     {
@@ -20,20 +19,19 @@ class MahasiswaController extends Controller
     }
 
     public function store(Request $request)
-{
-    $validated = $request->validate([
-        'nama' => 'required|string|max:255',
-        'npm' => 'required|string|max:255|unique:mahasiswas',
-        'nomor_telepon' => 'required|string|max:255',
-    ]);
+    {
+        $validated = $request->validate([
+            'nama' => 'required|string|max:255',
+            'npm' => 'required|string|max:255|unique:mahasiswas',
+            'nomor_telepon' => 'required|string|max:255',
+        ]);
 
-    $validated['user_id'] = auth()->id(); // Tambahkan user_id dari pengguna yang sedang login
+        $validated['user_id'] = auth()->id(); // Tambahkan user_id dari pengguna yang sedang login
 
-    Mahasiswa::create($validated);
+        Mahasiswa::create($validated);
 
-    return redirect()->route('mahasiswa.index')->with('success', 'Mahasiswa berhasil dibuat.');
-}
-
+        return redirect()->route('mahasiswa.index')->with('success', 'Mahasiswa berhasil dibuat.');
+    }
 
     public function show(Mahasiswa $mahasiswa)
     {
@@ -51,11 +49,12 @@ class MahasiswaController extends Controller
             'nama' => 'required|string|max:255',
             'nomor_telepon' => 'required|string|max:255',
         ]);
-    
+
         $mahasiswa->update($validated);
-    
+
         return redirect()->route('mahasiswa.index')->with('success', 'Mahasiswa berhasil diperbarui.');
     }
+
     public function destroy(Mahasiswa $mahasiswa)
     {
         $mahasiswa->delete();

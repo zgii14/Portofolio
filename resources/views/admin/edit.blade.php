@@ -75,7 +75,7 @@
                                             </option>
                                             <option value="{{ \App\Models\User::ROLE_ASISTEN }}"
                                                 {{ old("role", $user->role) === \App\Models\User::ROLE_ASISTEN ? "selected" : "" }}>
-                                                Staff
+                                                Asisten
                                             </option>
                                             @if (Auth::user()->role !== \App\Models\User::ROLE_ADMIN)
                                                 <input type="hidden" name="role" value="{{ $user->role }}">

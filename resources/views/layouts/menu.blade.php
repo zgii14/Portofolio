@@ -12,6 +12,9 @@
                 <a class="nav-link" href="{{ route("admin.users.index") }}">Pengguna</a>
             </li>
             <li>
+                <a class="nav-link" href="{{ route("asisten.index") }}">Asisten</a>
+            </li>
+            <li>
                 <a class="nav-link" href="{{ route("mahasiswa.index") }}">Mahasiswa</a>
             </li>
         </ul>

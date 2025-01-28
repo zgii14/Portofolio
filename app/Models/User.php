@@ -48,8 +48,8 @@ class User extends Authenticatable
     }
     const ROLE_ADMIN = 'admin';
     const ROLE_ASISTEN = 'asisten';
-    public function mahasiswas()
+    public function asistens()
     {
-        return $this->hasMany(Mahasiswa::class, 'user_id');
+        return $this->hasMany(Asisten::class, 'user_id');
     }
 }
