@@ -7,10 +7,19 @@ use Illuminate\Http\Request;
 
 class MahasiswaController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $mahasiswas = Mahasiswa::where('user_id', auth()->id())->get();
-        return view('mahasiswa.index', compact('mahasiswas'));
+        $search = $request->input('search');
+        $query = Mahasiswa::query();
+
+        if ($search) {
+            $query->where('nama', 'like', "%{$search}%")
+                  ->orWhere('npm', 'like', "%{$search}%");
+        }
+
+        $mahasiswas = $query->where('user_id', auth()->id())->get();
+
+        return view('mahasiswa.index', compact('mahasiswas', 'search'));
     }
 
     public function create()

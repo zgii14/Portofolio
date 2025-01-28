@@ -26,33 +26,6 @@
             </div>
         </div>
 
-        <!-- Filter dan Search Section -->
-        <div class="row mb-4">
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h4>Filter Asisten</h4>
-                    </div>
-                    <div class="card-body">
-                        <form method="GET" action="{{ route("asisten.index") }}">
-                            <div class="row align-items-center">
-                                <div class="col-md-4 mb-md-0 mb-3">
-                                    <input type="text" name="search" class="form-control"
-                                        placeholder="Cari nama atau NPM" value="{{ request("search") }}">
-                                </div>
-                                <div class="col-md-3 mb-md-0 mb-3">
-                                    <button type="submit" class="btn btn-primary">Cari</button>
-                                </div>
-                                <div class="col-md-3 mb-md-0 mb-3">
-                                    <a href="{{ route("asisten.index") }}" class="btn btn-secondary">Reset</a>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <!-- Tabel Asisten -->
         <div class="table-responsive">
             <table class="mt-4 table">
@@ -66,18 +39,19 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($asistens as $index => $asisten)
+                    @foreach ($asistens as $index => $asisten)
                         <tr>
                             <td>{{ $index + 1 }}</td>
                             <td>{{ $asisten->nama }}</td>
                             <td>{{ $asisten->npm }}</td>
                             <td>{{ $asisten->nomor_telepon }}</td>
                             <td>
-                                <a href="{{ route('asisten.show', $asisten->npm) }}" class="btn btn-info">Lihat</a>
-                                <a href="{{ route('asisten.edit', $asisten->npm) }}" class="btn btn-warning">Edit</a>
-                                <form action="{{ route('asisten.destroy', $asisten->npm) }}" method="POST" class="delete-form" style="display:inline;">
+                                <a href="{{ route("asisten.show", $asisten->npm) }}" class="btn btn-info">Lihat</a>
+                                <a href="{{ route("asisten.edit", $asisten->npm) }}" class="btn btn-warning">Edit</a>
+                                <form action="{{ route("asisten.destroy", $asisten->npm) }}" method="POST"
+                                    class="delete-form" style="display:inline;">
                                     @csrf
-                                    @method('DELETE')
+                                    @method("DELETE")
                                     <button type="submit" class="btn btn-danger">Hapus</button>
                                 </form>
                             </td>
