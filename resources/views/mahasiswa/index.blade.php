@@ -16,7 +16,17 @@
                 </div>
             </div>
         </div>
+        <!-- Add New User Button -->
+        @if (auth()->user()->role === "asisten")
+            <div class="row mb-3">
+                <div class="col-12 text-right">
+                    <a href="{{ route("mahasiswa.create") }}" class="btn btn-primary">
+                        <i class="fas fa-user-plus"></i> Tambah mahasiswa
+                    </a>
 
+                </div>
+            </div>
+        @endif
         <!-- Filter dan Search Section -->
         <div class="row mb-4">
             <div class="col-12">

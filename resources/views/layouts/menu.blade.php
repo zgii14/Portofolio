@@ -17,15 +17,20 @@
             <li>
                 <a class="nav-link" href="{{ route("mahasiswa.index") }}">Mahasiswa</a>
             </li>
+            <li>
+                <a class="nav-link" href="{{ route("jadwal.index") }}">Jadwal Praktikum</a>
+            </li>
+           
         </ul>
     </li>
-    <li class="menu-header">Manajemen Pemesanan</li>
+    <li class="menu-header">Manajemen Absensi</li>
     <li class="nav-item dropdown">
         <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="far fa-file-alt"></i>
-            <span>Data Pesanan</span></a>
-        <ul class="dropdown-menu">
-            <li>
-                <a class="nav-link">Paket Laundry</a>
+            <span>Data Absensi</span></a>
+            <ul class="dropdown-menu">
+                <li>
+                 
+                    <a class="nav-link" href="{{ route("absensi.index") }}">Absensi mahasiswa</a>
             </li>
             <li>
                 <a class="nav-link">Pemesanan</a>

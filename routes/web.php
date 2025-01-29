@@ -5,7 +5,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AsistenController;
 use App\Http\Controllers\MahasiswaController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\JadwalController;
+use App\Http\Controllers\AbsensiMahasiswaController;
 Route::get('/', function () {
     return view('welcome');
 });
@@ -51,4 +52,24 @@ Route::middleware('auth')->group(function () {
     Route::get('mahasiswa/{mahasiswa:npm}/edit', [MahasiswaController::class, 'edit'])->name('mahasiswa.edit');
     Route::put('mahasiswa/{mahasiswa:npm}', [MahasiswaController::class, 'update'])->name('mahasiswa.update');
     Route::delete('mahasiswa/{mahasiswa:npm}', [MahasiswaController::class, 'destroy'])->name('mahasiswa.destroy');
+});
+
+Route::middleware('auth')->group(function () {
+    
+Route::get('/jadwal', [JadwalController::class, 'index'])->name('jadwal.index');
+Route::get('/jadwal/{user}', [JadwalController::class, 'show'])->name('jadwal.show');
+Route::get('/jadwal/{user}/edit', [JadwalController::class, 'edit'])->name('jadwal.edit');
+Route::put('/jadwal/{user}', [JadwalController::class, 'update'])->name('jadwal.update');
+});
+
+Route::middleware('auth')->group(function () {
+    // Rute untuk Absensi Mahasiswa
+    Route::get('absensi', [AbsensiMahasiswaController::class, 'index'])->name('absensi.index');
+    Route::get('absensi/create', [AbsensiMahasiswaController::class, 'create'])->name('absensi.create');
+    Route::post('absensi', [AbsensiMahasiswaController::class, 'store'])->name('absensi.store');
+    Route::get('absensi/rekap', [AbsensiMahasiswaController::class, 'rekap'])->name('absensi.rekap');
+    Route::get('absensi/rekap/cetak', [AbsensiMahasiswaController::class, 'cetakPDF'])->name('absensi.cetak');
+    Route::get('absensi/{absensi}', [AbsensiMahasiswaController::class, 'edit'])->name('absensi.edit');
+    Route::put('absensi/{absensi}', [AbsensiMahasiswaController::class, 'update'])->name('absensi.update');
+    Route::delete('absensi/{absensi}', [AbsensiMahasiswaController::class, 'destroy'])->name('absensi.destroy');
 });
